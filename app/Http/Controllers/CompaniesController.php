@@ -49,58 +49,29 @@ class CompaniesController extends Controller
      */
      public function store(companyRequest $request)
      {
-       // if($request->file('image'))
-       //     {
-       //       $fileName=$request->file('image')->getClientOriginalName();
-       //
-       //
-       //       $buRequest->file('image')->move( base_path().'/public/website/bu_images/',$fileName);
-       //
-       //     $image=$fileName;
-       //     }else
-       //     {
-       //       $image='';
-       //     }
-
-
-    $img=  Image::make($request->file('image'));
-
-    //get the name of image to use it again storing in database
-
-  $imgName=$request->file('image')->getClientOriginalName();
-
-
-
-// modifing and customizing my image (resizing , archiving)
-  $img->resize(500,null,function($ratio)
-  {
-    $ratio->aspectRatio();
-  });
-  // save the image in the directory which i need
-        $img->save(public_path('com_imgs/'.$imgName),60);
-
-
-
-
-
-         if(Auth::check()){
-             $company = Company::create([
-                 'name' => $request->input('name'),
-                 'description' => $request->input('description'),
-                 'image'=>$imgName,//saving the img
-                 'user_id' => Auth::user()->id
-             ]);
-
-
-             if($company){
-                 return redirect()->route('companies.show', ['company'=> $company->id])
-                 ->with('success' , 'Company created successfully');
-             }
- return back()->withInput()->with('errors', 'Error creating new company');
-
-         }
-
-
+      $img=  Image::make($request->file('image'));
+      //get the name of image to use it again storing in database
+      $imgName=$request->file('image')->getClientOriginalName();
+      // modifing and customizing my image (resizing , archiving)
+      $img->resize(500,null,function($ratio)
+      {
+       $ratio->aspectRatio();
+      });
+      // save the image in the directory which i need
+      $img->save(public_path('com_imgs/'.$imgName),60);
+      if(Auth::check()){
+        $company = Company::create([
+          'name' => $request->input('name'),
+          'description' => $request->input('description'),
+          'image'=>$imgName,//saving the img
+          'user_id' => Auth::user()->id
+        ]);
+      if($company){
+        return redirect()->route('companies.show', ['company'=> $company->id])
+        ->with('success' , 'Company created successfully');
+      }
+        return back()->withInput()->with('errors', 'Error creating new company');
+      }
      }
 
     /**
@@ -111,11 +82,10 @@ class CompaniesController extends Controller
      */
     public function show(Company $company)
     {
-    $company=Company::find($company->id);
-// this variable will be catched in comments blade and according to it the from input will be for companies projects or tasks
-$commentable_type ='company';
-
-return view('companies.show', ['company'=>$company] );
+      $company=Company::find($company->id);
+      // this variable will be catched in comments blade and according to it the from input will be for companies projects or tasks
+      $commentable_type ='company';
+      return view('companies.show', ['company'=>$company] );
     }
 
     /**
@@ -127,7 +97,6 @@ return view('companies.show', ['company'=>$company] );
     public function edit(Company $company)
     {
         $company=Company::find($company->id);
-
         return view('companies.edit', ['company'=>$company] );
     }
 
@@ -141,46 +110,29 @@ return view('companies.show', ['company'=>$company] );
     public function update($id, Request $request)
     {
       //save data
-    // catch the image from the input and put in a variable
-   $company=  Company::find($id);
-
+      // catch the image from the input and put in a variable
+      $company=  Company::find($id);
       $img=  Image::make($request->file('image'));
-
       //get the name of image to use it again storing in database
-
       $imgName=$request->file('image')->getClientOriginalName();
-
-
-
       // modifing and customize my image (resizing , archiving)
       $img->resize(500,null,function($ratio)
       {
-      $ratio->aspectRatio();
+       $ratio->aspectRatio();
       });
       // save the image in the directory which i need
-          $img->save(public_path('com_imgs/'.$imgName),60);
-
-
-
-
-
-
-
+      $img->save(public_path('com_imgs/'.$imgName),60);
       $companyUpdate = Company::where('id', $company->id)
       ->update([
-              'name'=> $request->input('name'),
-              'description'=> $request->input('description'),
-              'image'=>$imgName
+        'name'=> $request->input('name'),
+        'description'=> $request->input('description'),
+        'image'=>$imgName
       ]);
-
-        if($companyUpdate){
+      if($companyUpdate){
         return redirect()->route('companies.show', ['company'=> $company->id])
         ->with('success' , 'Company updated successfully');
-        }
-
-        return redirect()->back()->withInput();
-
-
+      }
+      return redirect()->back()->withInput();
     }
 
     /**
@@ -197,6 +149,5 @@ return view('companies.show', ['company'=>$company] );
           return redirect()->route('companies.index')->with('success','company was deleted successfully');
       }
      return back()->withInput()->with('error','Company deleting error ');
-
     }
 }

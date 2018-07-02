@@ -56,14 +56,12 @@ class UsersController extends Controller
               'password'=>bcrypt($request['password'])
             ]);
 
-
-
-if ($user) {
-return redirect('/users')->with('success','You have added  new user successfully');
-}else
-{
- return redirect()->back()->with('error','Error Adding new user');
-}
+    if ($user) {
+    return redirect('/users')->with('success','You have added  new user successfully');
+    }else
+    {
+     return redirect()->back()->with('error','Error Adding new user');
+    }
 
 
 
@@ -83,7 +81,7 @@ return redirect('/users')->with('success','You have added  new user successfully
     $tasks=Task::where('user_id',$id)->get();
     $comments=Comment::where('user_id',$id)->get();
 
-return view('users.show',['user'=>$user,'companies'=>$companies,'projects'=>$projects,'tasks'=>$tasks,'comments'=>$comments]);
+   return view('users.show',['user'=>$user,'companies'=>$companies,'projects'=>$projects,'tasks'=>$tasks,'comments'=>$comments]);
 
 
     }
@@ -97,7 +95,6 @@ return view('users.show',['user'=>$user,'companies'=>$companies,'projects'=>$pro
     public function edit(User $user,$id)
     {
         $user=$user->find($id);
-
         return view('users.edit',['user'=>$user]);
     }
 
@@ -110,7 +107,7 @@ return view('users.show',['user'=>$user,'companies'=>$companies,'projects'=>$pro
      */
     public function update(Request $request, User $user)
     {
-$userUpdate=$user->find($user->id);
+      $userUpdate=$user->find($user->id);
 
       if($request->file('image'))
       {
@@ -120,34 +117,21 @@ $userUpdate=$user->find($user->id);
       // array_only($request->all(),
       $userUpdate->fill(['image'=>$fileName])->save();
       }
-
-
-
-
-
-
-
  $userUpdate=$user->where('id',$user->id)->update(
    [
      'name'=>$request->name,
      'email'=>$request->email,
-
      'job_title'=>$request->job_title,
-
      'bio'=>$request->bio,
      'dob'=>$request->dob
-
-
 ]
  );
 
-if ($userUpdate) {
-  return redirect()->route('users.index')->with('success','Users Had been Editted Successfully');
-}else {
-  return redirectWithInput('error','Error Editing User');
-}
-
-
+    if ($userUpdate) {
+      return redirect()->route('users.index')->with('success','Users Had been Editted Successfully');
+    }else {
+      return redirectWithInput('error','Error Editing User');
+    }
     }
 
     /**
@@ -158,16 +142,12 @@ if ($userUpdate) {
      */
     public function destroy(User $user,$id)
     {
-$user=$user->find($id);
-
-if ($user->delete()) {
-  return redirect()->back()->with('success','User Deleting successfully');
-}else
-{
-  return back()->withInput()->with('error','Error users deleting  ');
-}
-
-
-
+      $user=$user->find($id);
+      if ($user->delete()) {
+        return redirect()->back()->with('success','User Deleting successfully');
+      }else
+      {
+        return back()->withInput()->with('error','Error users deleting  ');
+      }
     }
 }
