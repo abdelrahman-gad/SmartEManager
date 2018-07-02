@@ -5,6 +5,7 @@ use App\Comment;
 use App\Project;
 use App\Company;
 use Illuminate\Http\Request;
+use App\Http\Requests\projectRequest;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use File;
@@ -31,30 +32,7 @@ class ProjectsController extends Controller
      }
 
 
-public function adduser(Request $request)
-{
-        // add user to the project
-        $project=Project::find($request->input('project_id'));
-        if(Auth::user()->id == $project['user_id'] ){
 
-        $user=User::where('email',$request->input('email'))->first();
-        if($project  && $user)
-        {
-
-            $project->users()->attach($user_id);
-        return redirect()->route('projects.show',['project',$project_id])->with('success',$request->input('email').'was added successfully');
-
-        }
-
-    }
-        return redirect()->route('projects.show',['project',$project_id])->with('errors',$request->input('email').'Error Adding User');
-
-
-
-
-
-
-}
 
 
      /**
@@ -84,7 +62,7 @@ public function adduser(Request $request)
       * @param  \Illuminate\Http\Request  $request
       * @return \Illuminate\Http\Response
       */
-     public function store(Request $request )
+     public function store(projectRequest $request )
      {
 
        // if($request->file('image'))

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use File;
+use Route;
+use App\Http\Requests\companyRequest;
 class CompaniesController extends Controller
 {
     /**
@@ -22,6 +24,7 @@ class CompaniesController extends Controller
             return view('companies.index',['companies'=>$companies]);
 
         }
+
        return view('auth.login');
     }
 
@@ -44,7 +47,7 @@ class CompaniesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-     public function store(Request $request)
+     public function store(companyRequest $request)
      {
        // if($request->file('image'))
        //     {

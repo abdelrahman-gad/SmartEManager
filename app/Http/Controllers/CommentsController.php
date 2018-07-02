@@ -8,7 +8,7 @@ use App\Project;
 use App\Task;
 
 use Illuminate\Http\Request;
-
+use App\Http\Requests\commentRequest;
 use Illuminate\Support\Facades\Auth;
 
 class CommentsController extends Controller
@@ -39,16 +39,13 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(commentRequest $request)
     {
-        //
-
-         //
+  // adding validation later
 
          if(Auth::check()){
             $comment = Comment::create([
                 'body' => $request->input('body'),
-                'image' => $request->input('image'),
                 'commentable_type' => $request->input('commentable_type'),
                 'commentable_id' => $request->input('commentable_id'),
                 'user_id' => Auth::user()->id

@@ -5,6 +5,7 @@ use App\Project;
 use App\Company;
 use App\Comment;
 use Illuminate\Http\Request;
+use App\Http\Requests\taskRequest;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use File;
@@ -67,7 +68,7 @@ return view('auth.login');
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(taskRequest $request)
     {
 
 
