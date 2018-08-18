@@ -19,10 +19,17 @@
 
       <!-- Example row of columns -->
       <div class="row">
-  <a href="/pmanager/public/tasks/create" class="btn btn-success  pull-right" > Add Project </a>
+  <a href="{{route('tasks.create')}}" class="btn btn-success  pull-right" > Add Task </a>
 <br/>
 
 @include('partials.comments')
+
+
+
+
+
+
+
 
       </div>
 
@@ -42,13 +49,13 @@
            <div class="sidebar-module">
             <h4>Actions</h4>
             <ol class="list-unstyled">
-              <li><a href="/pmanager/public/tasks/{{ $task->id }}/edit"> <i class="fa fa-pencil" aria_hidden="true" ></i> Edit</a></li>
+              <li><a href="{{route('tasks.edit',$task->id)}}"> <i class="fa fa-pencil" aria_hidden="true" ></i> Edit</a></li>
 
-              <li><a href="/pmanager/public/tasks"> <i class="fa fa-list" aria-hidden="true"></i>  List of tasks</a></li>
-              <li><a href="/pmanager/public/tasks/create"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Add new task</a></li>
+              <li><a href="{{route('tasks.index')}}"> <i class="fa fa-list" aria-hidden="true"></i>  List of tasks</a></li>
+              <li><a href="{{route('tasks.create')}}"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Add new task</a></li>
               @if($task->user_id==Auth::user()->id )
                             <li>
-                            <a href="/pmanager/public/tasks/{{$task->id}}/delete"
+                            <a href="{{route('tasks.destroy',$task->id)}}"
 
                              >
 

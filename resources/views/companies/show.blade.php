@@ -20,14 +20,14 @@
       <div class="row">
 
       <p > Projects </p>
-  <a href="/pmanager/public/projects/create/{{ $company->id }}" class="btn btn-success  pull-right" > Add Project </a>
+  <a href="{{route('projects.create',$company->id)}}" class="btn btn-success  pull-right" > Add Project </a>
 
       @foreach($company->projects as $project)
         <div class="col-lg-4">
           <h2> {{$project->name}} </h2>
           <p class="text-danger"> {{$project->description}} </p>
 
-          <p><a class="btn btn-primary" href="/pmanager/public/projects/{{$project->id}}" role="button">View Project </a></p>
+          <p><a class="btn btn-primary" href="{{route('projects.show',$project->id)}}" role="button">View Project </a></p>
         </div>
       @endforeach
 
@@ -51,10 +51,10 @@
            <div class="sidebar-module">
             <h4>Actions</h4>
             <ol class="list-unstyled">
-              <li><a href="/pmanager/public/companies/{{ $company->id }}/edit">Edit</a></li>
-              <li><a href="/pmanager/public/projects/create/{{ $company->id }}">Add Projects</a></li>
-              <li><a href="/pmanager/public/companies">List of companies</a></li>
-              <li><a href="/pmanager/public/companies/create">Add new Company</a></li>
+              <li><a href="{{route('companies.edit',$company->id)}}">Edit</a></li>
+              <li><a href="{{route('projects.create',$company->id)}}">Add Projects</a></li>
+              <li><a href="{{route('companies.index')}}">List of companies</a></li>
+              <li><a href="{{route('companies.create')}}">Add new Company</a></li>
 
               <li>
               <a href="#"

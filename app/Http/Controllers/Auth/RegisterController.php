@@ -49,12 +49,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
 
-
-
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6|confirmed',          
             'job_title' => 'required|string|max:255',
             'bio' => 'required|string|max:255',
             'dob' => 'required|string|max:255',
@@ -73,24 +71,18 @@ class RegisterController extends Controller
     {
       $img=  Image::make($data['image']);
 
-
-      //get the name of image to use it again storing in database
+     // get the name of image to use it again storing in database
 
       $imgName=$data['image']->getClientOriginalName();
 
-
-      //$img->resize(340,240);
-
-      // modifing and customizing my image (resizing , archiving)
+     // modifing and customizing my image (resizing , archiving)
       $img->resize(500,null,function($ratio)
       {
       $ratio->aspectRatio();
       });
-      // save the image in the directory which i need
+
+     // save the image in the directory which i need
           $img->save(public_path('user_imgs/'.$imgName));
-
-
-
 
         return User::create([
             'name' => $data['name'],

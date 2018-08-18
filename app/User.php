@@ -19,17 +19,9 @@ protected $table ='users';
 
      protected $fillable = [
         'name',
-        'email',
-        'job_title',
-        'image',
-        'bio',
-        'dob',
+        'email',        
         'password',
-        'first_name',
-        'middle_name',
-        'last_name',
-        'city',
-        'role_id'
+
     ];
 
 

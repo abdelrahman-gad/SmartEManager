@@ -2,13 +2,13 @@
 @section('content')
 <div class="panel panel-primary">
   <!-- Default panel contents -->
-  <div class="panel-heading"> Tasks <a class="pull-right btn btn-success btn-sm " style="margin-bottom:10px;" href="/pmanager/public/tasks/create"> Add new Task </a> </div>
+  <div class="panel-heading"> Tasks <a class="pull-right btn btn-success btn-sm " style="margin-bottom:10px;" href="{{route('tasks.create')}}"> Add new Task </a> </div>
   <div class="panel-body">
    <!-- List group -->
 
    <ul class="list-group">
      @foreach($tasks as $task)
-     <a  href="/pmanager/public/tasks/{{ $task->id }}">
+     <a  href="{{route('tasks.show',$task->id)}}">
            <div class="col-sm-4">
 
 
@@ -31,7 +31,7 @@
 
 
 
-     <a href="/pmanager/public/tasks/create">
+     <a href="{{route('tasks.create')}}">
            <div class="col-sm-4">
 
 

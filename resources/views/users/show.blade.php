@@ -29,11 +29,11 @@
 
   <div class="w3-card-4 user">
 
-  <header class="w3-container w3-light-grey"  style="display:flex" >
-    <h3> <span> {{$user->name}}</span>
+  <header class="w3-container w3-light-grey">
+    <h3>  {{$user->name}}
 
-  <a  href="/pmanager/public/users/{{$user->id}}/edit" style="margin-left:400px;" class="w3-button w3-blue"> <i class="fa fa-pencil"></i>  Edit</a>
-  <a href="/pmanager/public/users/{{$user->id}}/delete" class="w3-button w3-red">  <i class="fa fa-trash"></i> Delete</a>
+  <a  href="{{route('users.edit',$user->id)}}" style="margin-left:400px;" class="w3-button w3-blue"> <i class="fa fa-pencil"></i>  Edit</a>
+  <a href="{{route('users.destroy',$user->id)}}" class="w3-button w3-red">  <i class="fa fa-trash"></i> Delete</a>
 
 
 
@@ -41,22 +41,10 @@
 
   </header>
 
-  <div class="w3-container" style="height:500px;">
-    <h2> {{$user->job_title}}</h2>
+  <div class="w3-container">
+    <p> {{$user->job_title}} </p>
     <hr>
-  <div class="col-md-1">
-
-    <img src="{{ Request::root().'/user_imgs/'.$user->image}}" style="max-width:400px;" alt="Avatar" class="w3-left w3-sq">
-  </div>
-    <div class="col-md-offset-6 col-md-5">
-      <h2>  {{$user->bio}} </h2>
-       <h3> Loreme Ipsum Poto leam kam egan dekt </h3>
-    <p>President/CEO at Mighty Schools ....</p>
-
-    </div>
-
-
-  </div>
+  
 
 
   </div>
@@ -64,17 +52,5 @@
 </div>
 
 <!-- Starting  of Every Single user activities such as Companies , projects ,Tasks , Comments  -->
-
-
-
-
-
-
-
-
-
-
-
-
 
 @endsection

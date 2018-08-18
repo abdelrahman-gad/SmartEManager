@@ -59,9 +59,9 @@
             <h4>Actions</h4>
             <ol class="list-unstyled">
 
-              <li><a href="/pmanager/public/companies"><i class="fa fa-building" aria-hidden="true"></i> All companies</a></li>
-              <li><a href="/pmanager/public/projects"><i class="fa fa-building" aria-hidden="true"></i> All Projects</a></li>
-              <li><a href="/pmanager/public/tasks"><i class="fa fa-building" aria-hidden="true"></i> All tasks</a></li>
+              <li><a href="{{route('companies.index')}}"><i class="fa fa-building" aria-hidden="true"></i> All companies</a></li>
+              <li><a href="{{route('projects.index')}}"><i class="fa fa-building" aria-hidden="true"></i> All Projects</a></li>
+              <li><a href="{{route('tasks.index')}}"><i class="fa fa-building" aria-hidden="true"></i> All tasks</a></li>
 
             </ol>
      </div>

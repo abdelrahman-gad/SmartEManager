@@ -1,4 +1,6 @@
 
+
+
 <div class="row">
 <div class="col-sm-10 col-sm-offset-1" >
 
@@ -80,13 +82,13 @@
              @foreach($comments as $comment)
                  <li class="media">
                      <div class="media-left">
-                         <img src="{{ Request::root().'/user_imgs/'.$comment->user->image}}"class="img-circle" width="100px"  height="100px" >
+                         <img src="http://placehold.it/60x60" class="img-circle">
                      </div>
                      <div class="media-body">
                          <h3 class="media-heading">
 
 
-                                 commented by : <a href='/pmanager/public/users/{{$comment->user->id}}/show' >
+                                 commented by : <a  href="{{route('users.show',$comment->user->id)}}"  >
                     {{ $comment->user->name}} </a>
                         <br>
 

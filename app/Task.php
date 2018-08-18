@@ -16,7 +16,7 @@ class Task extends Model
         'days',
         'hours',
         'company_id',
-
+        
     ];
 
 
@@ -40,6 +40,6 @@ class Task extends Model
 
     public function comments()
     {
-        return $this->hasMany('App\Comment');
+        return $this->morphMany('App\Comment', 'commentable');
     }
 }

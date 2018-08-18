@@ -6,9 +6,11 @@ use App\Comment;
 use App\Company;
 use App\Project;
 use App\Task;
+
 use Illuminate\Http\Request;
-use App\Http\Requests\commentRequest;
+
 use Illuminate\Support\Facades\Auth;
+
 class CommentsController extends Controller
 {
     /**
@@ -37,21 +39,30 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(commentRequest $request)
+    public function store(Request $request)
     {
-  // adding validation later
-       if(Auth::check()){
+        //
+
+         //
+
+         if(Auth::check()){
             $comment = Comment::create([
                 'body' => $request->input('body'),
+                'image' => $request->input('image'),
                 'commentable_type' => $request->input('commentable_type'),
                 'commentable_id' => $request->input('commentable_id'),
                 'user_id' => Auth::user()->id
             ]);
+
+
             if($comment){
                 return back()->with('success' , 'Comment created successfully');
             }
+
         }
+
             return back()->withInput()->with('errors', 'Error creating new comment');
+
     }
 
     /**
@@ -62,24 +73,33 @@ class CommentsController extends Controller
      */
     public function show(Comment $comment,$id)
     {
-        // find the comment and redirect to object(Company,project,task) which is commented on
-  $comment=Comment::find($id);
+      // find the comment and redirect to object(Company,project,task) which is commented on
+$comment=Comment::find($id);
 
 
-  if($comment->commentable_type=='company')
-    {
-      $company=Company::where('id',$comment->commentable_id);
-      return view('companies.show',['company'=>$company]);
-    }
-    else if ($comment->commentable_type=='project') {
-      $project=Project::where('id',$comment->commentable_id);
-        return view('projects.show',['project'=>$project]);
-    }
-    else
-    {
-      $task=task::where('id',$comment->commentable_id);
-     return view('tasks.show',['task'=>$task]);
-    }
+if($comment->commentable_type=='company')
+{
+$company=Company::where('id',$comment->commentable_id);
+return view('companies.show',['company'=>$company]);
+}
+elseif ($comment->commentable_type=='project') {
+
+  $project=Project::where('id',$comment->commentable_id);
+
+    return view('projects.show',['project'=>$project]);
+
+}
+else
+{
+  $task=task::where('id',$comment->commentable_id);
+
+ return view('tasks.show',['task'=>$task]);
+
+}
+
+
+
+
     }
 
     /**
@@ -90,8 +110,10 @@ class CommentsController extends Controller
      */
     public function edit(Comment $comment ,$id)
     {
-    $comment =Comment::find($id);
-    return redirect()->back('edit','comment');
+$comment =Comment::find($id);
+
+return redirect()->back('edit','comment');
+
     }
 
     /**
@@ -114,8 +136,11 @@ class CommentsController extends Controller
      */
     public function destroy(Comment $comment ,$id)
     {
-      $comment=Comment::find($id);
-      $comment->delete();
-      return redirect()->back()->with('success','comment had been deleted successfully');
+$comment=Comment::find($id);
+
+$comment->delete();
+return redirect()->back()->with('success','comment had been deleted successfully');
+
+
     }
 }

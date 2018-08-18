@@ -85,9 +85,9 @@
   <div class="sidebar-module " style="margin: 10px">
             <h4>Actions</h4>
             <ol class="list-unstyled">
-              <li><a href="/pmanager/public/companies/{{ $company->id }}"><i class="fa fa-building-o" aria-hidden="true"></i>
+              <li><a href="{{route('companies.show',$company->id)}}"><i class="fa fa-building-o" aria-hidden="true"></i>
                View companies</a></li>
-              <li><a href="/pmanager/public/companies"><i class="fa fa-building" aria-hidden="true"></i> All companies</a></li>
+              <li><a href="{{route('companies.index')}}"><i class="fa fa-building" aria-hidden="true"></i> All companies</a></li>
 
             </ol>
           </div>

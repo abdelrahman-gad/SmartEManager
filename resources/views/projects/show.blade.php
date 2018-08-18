@@ -17,7 +17,7 @@
 
       <!-- Example row of columns -->
       <div class="row">
-  <a href="/pmanager/public/projects/create" class="btn btn-success  pull-right" > Add Project </a>
+  <a href="{{route('projects.create')}}" class="btn btn-success  pull-right" > Add Project </a>
 <br/>
 
 @include('partials.comments')
@@ -56,14 +56,14 @@
            <div class="sidebar-module">
             <h4>Actions</h4>
             <ol class="list-unstyled">
-              <li><a href="/pmanager/public/projects/{{ $project->id }}/edit"> <i class="fa fa-pencil" aria_hidden="true" ></i> Edit</a></li>
+              <li><a href="{{route('projects.edit',$project->id)}}"> <i class="fa fa-pencil" aria_hidden="true" ></i> Edit</a></li>
 
-              <li><a href="/pmanager/public/projects"> <i class="fa fa-list" aria-hidden="true"></i>  List of projects</a></li>
-              <li><a href="/pmanager/public/projects/create"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Add new project</a></li>
+              <li><a href="{{route('projects.index')}}"> <i class="fa fa-list" aria-hidden="true"></i>  List of projects</a></li>
+              <li><a href="{{route('projects.create')}}"> <i class="fa fa-plus-circle" aria-hidden="true"></i> Add new project</a></li>
 
 @if($project->user_id==Auth::user()->id )
 <li>
-<a href="/pmanager/public/projects/{{$project->id}}/delete"
+<a href="{{route('projects.destroy',$project->id)}}"
 
  >
 

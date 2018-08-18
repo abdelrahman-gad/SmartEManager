@@ -81,9 +81,9 @@
   <div class="sidebar-module " style="margin: 10px">
             <h4>Actions</h4>
             <ol class="list-unstyled">
-              <li><a href="/pmanager/public/projects/{{ $project->id }}"><i class="fa fa-building-o" aria-hidden="true"></i>
+              <li><a href="{{route('project.show',$project->id)}}"><i class="fa fa-building-o" aria-hidden="true"></i>
                View projects</a></li>
-              <li><a href="/pmanager/public/projects"><i class="fa fa-building" aria-hidden="true"></i> All Project</a></li>
+              <li><a href="{{route('projects.index')}}"><i class="fa fa-building" aria-hidden="true"></i> All Project</a></li>
 
             </ol>
           </div>

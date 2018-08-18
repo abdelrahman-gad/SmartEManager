@@ -46,65 +46,7 @@
                  </div>
            <br><br>
 
-                 <div class="form-group{{ $errors->has('job_title') ? ' has-error' : '' }}">
-                     <label for="job_title" class="col-md-4 control-label">Job Title</label>
 
-                     <div class="col-md-6">
-                         <input id="job_title" type="text" class="form-control" name="job_title" value="{{$user->job_title}}" required>
-
-                         @if ($errors->has('job_title'))
-                             <span class="help-block">
-                                 <strong>{{ $errors->first('job_title') }}</strong>
-                             </span>
-                         @endif
-                     </div>
-                 </div>
-           <br><br>
-                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                     <label for="bio" class="col-md-4 control-label"> BIO </label>
-
-                     <div class="col-md-6">
-                         <textarea id="bio"  rows="3" type="text" class="form-control" name="bio" value="" required>
-{{$user->bio}}
-           </textarea>
-                         @if ($errors->has('bio'))
-                             <span class="help-block">
-                                 <strong>{{ $errors->first('bio') }}</strong>
-                             </span>
-                         @endif
-                     </div>
-                 </div>
-           <br><br> <br> <br>
-
-                 <div class="form-group{{ $errors->has('dob') ? ' has-error' : '' }}">
-                     <label for="dob" class="col-md-4 control-label">Dato Of Birth </label>
-
-                     <div class="col-md-6">
-                         <input id="dob" type="date" class="form-control" name="dob" value="{{$user->dob}}" required>
-
-                         @if ($errors->has('dob'))
-                             <span class="help-block">
-                                 <strong>{{ $errors->first('dob') }}</strong>
-                             </span>
-                         @endif
-                     </div>
-                 </div>
-
-           <br><br>
-                 <div class="form-group">
-                 <label class="col-md-4 control-label"> Image </label>
-
-
-                   <img src="{{ Request::root().'/user_imgs/'.$user->image}}" style="width:600px"  alt="Avatar" class="w3-left w3-sq">
-<br><br>
-                 {!! Form::file('image',null,['class'=>'form-control','style'=>'margin-left:40px;']) !!}
-
-                 </div>
-
-
-
-
-                 <br>
 <div class="form-group">
   <input type="submit" value="Edit User" class="btn btn-primary btn-block " >
 
@@ -126,9 +68,9 @@
                 <h4>Actions</h4>
                 <ol class="list-unstyled">
 
-                  <li><a href="/pmanager/public/companies"><i class="fa fa-building" aria-hidden="true"></i> All companies</a></li>
-                  <li><a href="/pmanager/public/projects"><i class="fa fa-building" aria-hidden="true"></i> All Projects</a></li>
-                  <li><a href="/pmanager/public/tasks"><i class="fa fa-building" aria-hidden="true"></i> All tasks</a></li>
+                  <li><a href="{{route('companies.index')}}"><i class="fa fa-building" aria-hidden="true"></i> All companies</a></li>
+                  <li><a href="{{route('projects.index')}}"><i class="fa fa-building" aria-hidden="true"></i> All Projects</a></li>
+                  <li><a href="{{route('tasks.index')}}"><i class="fa fa-building" aria-hidden="true"></i> All tasks</a></li>
 
                 </ol>
          </div>

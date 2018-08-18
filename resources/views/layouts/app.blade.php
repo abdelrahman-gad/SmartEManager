@@ -251,10 +251,10 @@ table tr:nth-child(2n+1) {
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
 
-                        <li> <a href="/pmanager/public/companies"><i class="fa fa-building"> </i> {{trans('manager.companies')}}</a> </li>
+                        <li> <a href="{{route('companies.index')}}"><i class="fa fa-building"> </i> {{trans('manager.companies')}}</a> </li>
 
-                            <li> <a href="/pmanager/public/projects"><i class="fa fa-briefcase"> </i> {{trans('manager.projects')}}</a> </li>
-                            <li>  <a href="/pmanager/public/tasks"><i class="fa fa-tasks"> </i> {{trans('manager.tasks')}}</a> </li>
+                            <li> <a href="{{route('projects.index')}}"><i class="fa fa-briefcase"> </i> {{trans('manager.projects')}}</a> </li>
+                            <li>  <a href="{{route('tasks.index')}}"><i class="fa fa-tasks"> </i> {{trans('manager.tasks')}}</a> </li>
 
                             @if(Auth::user()->role_id==1)
    <!--start private addition(dropdown) it is only for the Admin  -->
@@ -266,11 +266,11 @@ table tr:nth-child(2n+1) {
 
                                 <ul class="dropdown-menu" role="menu">
 
-                                <li> <a href="/pmanager/public/companies"><i class="fa fa-building"> </i>All Companies </a> </li>
+                                <li> <a href="{{route('companies.index')}}"><i class="fa fa-building"> </i>All Companies </a> </li>
 
-                            <li> <a href="/pmanager/public/projects"><i class="fa fa-briefcase"> </i>All  Projects</a> </li>
-                            <li>  <a href="/pmanager/public/tasks"><i class="fa fa-tasks"> </i>All  Tasks</a> </li>
-                              <li>  <a href="/pmanager/public/users"><i class="fa fa-tasks"> </i>All Users  </a> </li>
+                            <li> <a href="{{route('companies.index')}}"><i class="fa fa-briefcase"> </i>All  Projects</a> </li>
+                            <li>  <a href="{{route('tasks.index')}}"><i class="fa fa-tasks"> </i>All  Tasks</a> </li>
+                              <li>  <a href="{{route('users.index')}}"><i class="fa fa-tasks"> </i>All Users  </a> </li>
 
 
                                 </ul>
@@ -287,7 +287,7 @@ table tr:nth-child(2n+1) {
 
                                 <ul class="dropdown-menu" role="menu">
 
-                                    <li><a   href="/pmanager/public/users/{{Auth::user()->id}}/show"> <i class="fa fa-user">   </i> Profile </a>  </li>
+                                    <li><a  href="{{route('users.show',Auth::user()->id)}}" > <i class="fa fa-user">   </i> Profile </a>  </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

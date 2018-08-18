@@ -25,7 +25,7 @@
 @section('content')
 <div class="panel panel-primary">
   <!-- Default panel contents -->
-  <div class="panel-heading"> Companies <a class="pull-right btn btn-success btn-sm " style="margin-bottom:10px;" href="/pmanager/public/companies/create"> Create new Company </a> </div>
+  <div class="panel-heading"> Companies <a class="pull-right btn btn-success btn-sm " style="margin-bottom:10px;" href="{{route('companies.create')}}"> Create new Company </a> </div>
   <div class="panel-body">
    <!-- List group -->
 
@@ -33,7 +33,7 @@
 
     <ul class="list-group">
       @foreach($companies as $company)
-<a  href="/pmanager/public/companies/{{ $company->id }}">
+<a  href="{{route('companies.show',$company->id)}}">
       <div class="col-sm-4">
 
 
@@ -55,7 +55,7 @@
 
     @endforeach
 
-    <a href="/pmanager/public/companies/create">
+    <a href="{{route('companies.create')}}">
           <div class="col-sm-4">
 
 

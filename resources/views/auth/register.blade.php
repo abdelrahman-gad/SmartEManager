@@ -42,9 +42,8 @@
                                 @endif
                             </div>
                         </div>
-<br><br>
-
-                        <div class="form-group{{ $errors->has('job_title') ? ' has-error' : '' }}">
+<br>
+<div class="form-group{{ $errors->has('job_title') ? ' has-error' : '' }}">
                             <label for="job_title" class="col-md-4 control-label">Job Title</label>
 
                             <div class="col-md-6">
@@ -72,7 +71,7 @@
                                 @endif
                             </div>
                         </div>
-<br><br> <br> <br>
+<br><br> 
 
                         <div class="form-group{{ $errors->has('dob') ? ' has-error' : '' }}">
                             <label for="dob" class="col-md-4 control-label">Dato Of Birth </label>
@@ -87,7 +86,6 @@
                                 @endif
                             </div>
                         </div>
-
 <br><br>
                         <div class="form-group">
                         <label class="col-md-4 control-label"> Image </label>
